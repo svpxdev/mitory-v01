@@ -5,20 +5,20 @@
     <form action="/register" method="post">
       <div class="form-row">
         <div class="col-md-6 form-group">
-          <input type="text" class="form-control" name="fname" placeholder="First name" />
+          <input type="text" class="form-control" name="fname" placeholder="First name" required="true"/>
         </div>
         <div class="col-md-6 form-group">
-          <input type="text" class="form-control" name="lname" placeholder="Last name" />
+          <input type="text" class="form-control" name="lname" placeholder="Last name" required="true" />
         </div>
       </div>
       <div class="form-row">
         <div class="col form-group">
-          <input type="email" class="form-control" name="username" placeholder="Enter your email" />
+          <input type="email" class="form-control" name="username" placeholder="Enter your email"  required="true"/>
         </div>
       </div>
       <div class="form-row">
         <div class="col form-group">
-          <input type="password" class="form-control" name="password" placeholder="Enter password" />
+          <input type="password" class="form-control" name="password" placeholder="Enter password" required="true"/>
         </div>
       </div>
 
@@ -33,11 +33,11 @@
     </p>
     <div class="form-row">
       <div class="col form-group">
-        <a class="btn btn-block btn-outline-dark googleSocial"> Sign in with Google
+        <a class="btn btn-block btn-outline-dark googleSocial" href="/auth/google"> Sign in with Google
         </a>
       </div>
       <div class="col form-group">
-        <a class="btn btn-block btn-outline-dark faceSocial"> Sign in with Facebook
+        <a class="btn btn-block btn-outline-dark faceSocial" href="/auth/facebook"> Sign in with Facebook
         </a>
       </div>
     </div>
