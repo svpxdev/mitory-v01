@@ -1,0 +1,100 @@
+/* Styling Section : NavBar */
+
+html{
+  scroll-behavior: smooth;
+}
+
+.navbar{
+  padding-left: 0;
+}
+
+.form-mitory{
+  padding-top: 100px;
+  width: 600px;
+  margin-bottom: 60px;
+}
+
+.form-mitory h2{
+  margin-bottom: 20px;
+}
+
+
+.googleSocial{
+  border-color:  #DB4437;
+  color:  #DB4437;
+}
+
+.googleSocial:hover{
+  background-color: #DB4437;
+  border-color: #DB4437;
+}
+
+.faceSocial{
+  border-color:  #3b5998;
+  color:  #3b5998;
+}
+
+.faceSocial:hover{
+  background-color: #3b5998;
+  border-color: #3b5998;
+}
+
+.navbar strong{
+  font-family: 'Playfair Display', serif;
+}
+
+/* Styling Section: Hero */
+#hero-section{
+  height: auto;
+}
+
+.reg-height{
+  height: 80vh;
+}
+
+.hero-heading{
+  padding-top: 150px;
+    line-height: 1.5;
+}
+
+.hero-images{
+  height: 90%;
+  padding-top: 100px;
+}
+
+.hero-cols{
+  height: 500px;
+}
+
+.btn-custom{
+  margin-top: 15px;
+  margin-right: 20px;
+  width: 200px;
+}
+
+.about-p{
+  padding-bottom: 80px;
+}
+
+h1{
+  color:red;
+}
+
+.heading_style{
+  color: green;
+}
+
+.card-body{
+  height: 450px;
+  background-color: yellow;
+}
+
+
+/* Styling Section : Footer */
+
+.footer{
+  padding-top: 75px;
+  padding-bottom: 50px;
+  color: white;
+
+}

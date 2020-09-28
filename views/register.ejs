@@ -1,0 +1,48 @@
+<%- include("partials/header.ejs")%>
+<section id="registration" class="reg-height">
+  <div class="container form-mitory">
+    <h2>Register</h2>
+    <form action="/register" method="post">
+      <div class="form-row">
+        <div class="col-md-6 form-group">
+          <input type="text" class="form-control" name="fname" placeholder="First name" />
+        </div>
+        <div class="col-md-6 form-group">
+          <input type="text" class="form-control" name="lname" placeholder="Last name" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col form-group">
+          <input type="email" class="form-control" name="username" placeholder="Enter your email" />
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="col form-group">
+          <input type="password" class="form-control" name="password" placeholder="Enter password" />
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="col form-group">
+          <button type="submit" class="btn btn-primary btn-block">Register</button>
+        </div>
+      </div>
+    </form>
+    <p class="text-center">
+      or
+    </p>
+    <div class="form-row">
+      <div class="col form-group">
+        <a class="btn btn-block btn-outline-dark googleSocial"> Sign in with Google
+        </a>
+      </div>
+      <div class="col form-group">
+        <a class="btn btn-block btn-outline-dark faceSocial"> Sign in with Facebook
+        </a>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<%- include("partials/footer.ejs")%>

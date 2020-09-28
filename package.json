@@ -1,0 +1,32 @@
+{
+  "name": "mitory",
+  "version": "1.0.0",
+  "description": "An open-source minimalist journaling platform.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/svpxdev/mitory.git"
+  },
+  "author": "svpxdev",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/svpxdev/mitory/issues"
+  },
+  "homepage": "https://github.com/svpxdev/mitory#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "dotenv": "^8.2.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "lodash": "^4.17.20",
+    "mongoose": "^5.10.7",
+    "passport": "^0.4.1",
+    "passport-google-oauth20": "^2.0.0",
+    "passport-local": "^1.0.0",
+    "passport-local-mongoose": "^6.0.1"
+  }
+}
