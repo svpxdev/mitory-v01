@@ -178,7 +178,7 @@ app.get('/auth/facebook/posts',
   }),
   function(req, res) {
     // Successful authentication, redirect home.
-    res.redirect("posts", {
+    res.render("posts", {
       pageTitle: "Posts"
     });
   });
