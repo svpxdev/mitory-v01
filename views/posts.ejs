@@ -22,7 +22,11 @@
           <h2>Your stories</h2>
         </div>
         <div class="col text-right pt-2 pr-3">
-          <a href="/compose"  class="mt-5"><span class="fas fa-plus fa-lg"></span></a>
+          <a href="/compose" class="mt-5 ">
+            <div class="plus-rotate">
+              <span class="fas fa-plus fa-lg"></span>
+            </div>
+          </a>
         </div>
       </div>
     </div>
@@ -32,9 +36,9 @@
       <div class="card shadow mb-2">
         <div class="card-body">
           <h5 class="card-title"><%=post.title%></h5>
-          <p class="card-text"><%=post.content%></p>
-          <a href="#" class="card-link">Read more</a>
-          <a href="#" class="card-link">Delete</a>
+          <p class="card-text"><%=post.content.substring(0,200)%></p>
+          <a href="/page/<%=post.id%>" class="card-link">Read more</a>
+          <a href="/delete/<%=post.id%>" class="card-link delete">Delete</a>
         </div>
       </div>
       <%}) %>

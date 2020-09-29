@@ -30,7 +30,7 @@ const app = express();
 app.use(bodyParser.urlencoded({
   extended: true
 }));
-app.use(express.static("public"));
+app.use(express.static(__dirname + '/public'));
 app.set("view engine", "ejs");
 
 app.use(session({
@@ -237,12 +237,57 @@ app.route("/posts")
     }
   });
 
-app.route("/success")
+app.route("/compose")
   .get((req, res) => {
-    res.send("Login Success!");
+    res.render("compose", {
+      pageTitle: "Mitory | Compose",
+      fName: "Suryaveer"
+    });
+  })
+  .post((req, res) => {
+    if (req.isAuthenticated()) {
+      const blogpost = new Post({
+        title: req.body.title,
+        content: req.body.content,
+        linkedUserId: req.user.id
+      });
+      blogpost.save();
+      res.redirect("/posts");
+    } else {
+      console.log("Something a brewing!");
+    }
   });
 
+app.route("/page/:postName")
+  .get((req, res) => {
+    var queryTitle = (req.params.postName);
+    Post.findById(queryTitle,
+      function(err, foundArt) {
+        if (!err) {
+          console.log(foundArt);
+          res.render("articles", {
+            pageTitle: "Miroty | Article",
+            article: foundArt
+          });
+        } else {
+          console.log("Cannot find article");
+        }
+      });
+  });
 
+app.route("/delete/:postName")
+  .get((req, res) => {
+    var queryTitle = (req.params.postName);
+    console.log(queryTitle);
+    Post.deleteOne({
+      _id: queryTitle
+    }, (err) => {
+      if (err) {
+        console.log(err);
+      }
+    });
+    res.redirect("/posts");
+  });
 
 //Start the Server
 const port = process.env.PORT || 4500;

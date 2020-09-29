@@ -12,6 +12,21 @@ html{
     background-color: #CEFFF2;
 }
 
+.post-article{
+    background-color: #CEFFF2;
+    height: 300px;
+}
+
+.article-content{
+  font-size: 1.25rem;
+  white-space: pre-wrap;
+}
+
+.article-heading{
+  padding-top: 100px;
+}
+
+
 .posts h2{
   padding-top: 150px;
   height: 350px;
@@ -87,10 +102,6 @@ html{
   padding-bottom: 80px;
 }
 
-h1{
-  color:red;
-}
-
 .heading_style{
   color: green;
 }
@@ -114,24 +125,23 @@ h1{
   border: 0;
 }
 
-.card-columns {
-  @include media-breakpoint-only(lg) {
-    column-count: 4;
-  }
-  @include media-breakpoint-only(xl) {
-    column-count: 5;
-  }
-  @include media-breakpoint-only(md) {
-    column-count: 3;
-  }
-  @include media-breakpoint-only(sm) {
-    column-count: 1;
-  }
+.delete{
+  color: #FF4545;
 }
 
+.delete:hover{
+  color: #A43232;
+}
 
-.vertical-center {
-  margin: 0;
-  position: absolute;
-  top: 50%;
+.compose{
+  height: 350px;
+}
+
+.compose-write{
+  height: 450px;
+}
+
+.text-area{
+  font-size: 1.5rem;
+  font-family: Arial, Helvetica, sans-serif;
 }

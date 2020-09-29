@@ -1,0 +1,36 @@
+<%- include("partials/header.ejs")-%>
+
+<body>
+  <section id="post-hero">
+
+
+    <div class="container compose">
+      <div class="row">
+        <div class="col-md-6 compose">
+          <h2>Welcome, <%= fName %> ! </h2>
+          <% var today = new Date();%>
+          <%const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };%>
+          <% var day = today.toLocaleDateString('us-EN', options)%>
+          <h4><%=day%></h4>
+
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="compose-main">
+    <div class="container">
+      <form action="/compose" method="post">
+        <div class="form-group mt-5">
+          <input class="form-control form-control-lg" type="text" name="title" placeholder="Give your story a title..." />
+        </div>
+        <div class="form-group">
+          <textarea class="form-control" rows="14" name="content" placeholder="Start your story here..."></textarea>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Submit Post</button>
+        </div>
+      </form>
+    </div>
+  </section>
+</body>
+<%- include("partials/footer.ejs")-%>
