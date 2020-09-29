@@ -1,1 +1,41 @@
-<%- include("partials/header.ejs")%>
+<%- include("partials/header.ejs")-%>
+
+<body>
+
+
+  <section id="post-hero">
+
+
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 posts">
+          <h2>Welcome, <%= fName %> ! </h2>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="posts">
+    <div class="container mt-4">
+      <h2>Your stories</h2>
+    </div>
+    <div class="container mt-4 mb-4">
+
+      <% posts.forEach((post, index)=>{%>
+      <div class="card shadow mb-2">
+        <div class="card-body">
+          <h5 class="card-title"><%=post.title%></h5>
+          <p class="card-text"><%=post.content%></p>
+          <a href="#" class="card-link">Read more</a>
+          <a href="#" class="card-link">Delete</a>
+        </div>
+      </div>
+      <%}) %>
+
+    </div>
+  </section>
+
+</body>
+
+
+<%- include("partials/footer.ejs")-%>

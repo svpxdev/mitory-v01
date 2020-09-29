@@ -6,6 +6,8 @@ const passportLocalMongoose = require("passport-local-mongoose");
 const findOrCreate = require("mongoose-findorcreate");
 
 
+
+
 const userSchema = new mongoose.Schema({
   username: {
     type: String
@@ -18,6 +20,12 @@ const userSchema = new mongoose.Schema({
   },
   lname: {
     type: String
+  },
+  googleId: {
+    type: String
+  },
+  facebookId: {
+    type: String
   }
 });
 
@@ -26,4 +34,26 @@ userSchema.plugin(findOrCreate);
 
 const User = mongoose.model("User", userSchema);
 
-module.exports = User;
+
+const postSchema = new mongoose.Schema({
+  title: {
+    type: String
+  },
+  content: {
+    type: String
+  },
+  linkedUserId: {
+    type: String
+  }
+});
+
+postSchema.plugin(passportLocalMongoose);
+postSchema.plugin(findOrCreate);
+
+const Post = mongoose.model("Post", postSchema);
+
+
+module.exports = {
+  User,
+  Post
+};

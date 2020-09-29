@@ -7,7 +7,12 @@ const bodyParser = require("body-parser");
 const passport = require("passport");
 const _ = require("lodash");
 const ejs = require("ejs");
-const User = require("./userSchema");
+const {
+  User
+} = require("./userSchema");
+const {
+  Post
+} = require("./userSchema");
 const mongoose = require("mongoose");
 const passportLocalMongoose = require("passport-local-mongoose");
 const findOrCreate = require("mongoose-findorcreate");
@@ -15,11 +20,19 @@ const session = require("express-session");
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
 
+var check = true;
+
 //initial express
 
 const app = express();
 
 //middleware
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+app.use(express.static("public"));
+app.set("view engine", "ejs");
+
 app.use(session({
   secret: process.env.SECRETS,
   resave: false,
@@ -29,11 +42,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use(bodyParser.urlencoded({
-  extended: true
-}));
-app.use(express.static("public"));
-app.set("view engine", "ejs");
+
 
 //Google oauth20
 passport.use(new GoogleStrategy({
@@ -45,7 +54,10 @@ passport.use(new GoogleStrategy({
   function(accessToken, refreshToken, profile, cb) {
     console.log(profile);
     User.findOrCreate({
-      googleId: profile.id
+      fname: profile.name.givenName,
+      lname: profile.name.familyName,
+      googleId: profile.id,
+
     }, function(err, user) {
       return cb(err, user);
     });
@@ -54,6 +66,19 @@ passport.use(new GoogleStrategy({
 
 
 //Facebook oauth20
+passport.use(User.createStrategy());
+
+passport.serializeUser(function(user, done) {
+  done(null, user.id);
+});
+
+passport.deserializeUser(function(id, done) {
+  User.findById(id, function(err, user) {
+    done(err, user);
+  });
+});
+
+
 passport.use(new FacebookStrategy({
     clientID: process.env.FACEBOOK_APP_ID,
     clientSecret: process.env.FACEBOOK_APP_SECRET,
@@ -69,9 +94,8 @@ passport.use(new FacebookStrategy({
 ));
 
 
-
 //MongoDB Connection
-
+mongoose.set("useCreateIndex", true);
 mongoose.connect(process.env.MONGO_URL, {
   useUnifiedTopology: true,
   useNewUrlParser: true
@@ -80,18 +104,14 @@ mongoose.connect(process.env.MONGO_URL, {
     console.log("Connection successful");
   } else {
     console.log("Error Connecting..");
+    console.log(err);
   }
 });
 
-passport.serializeUser(function(user, done) {
-  done(null, user.id);
-});
+//testbed
 
-passport.deserializeUser(function(id, done) {
-  User.findById(id, function(err, user) {
-    done(err, user);
-  });
-});
+
+
 
 //Routing
 app.route("/")
@@ -114,17 +134,14 @@ app.route("/register")
     var lastName = req.body.lname;
 
     User.register({
-      username: username,
-      fname: firstName,
-      lname: lastName
+      username: username
     }, password, function(err, user) {
-      if (err) {
-        console.log(err);
-        res.redirect("/");
-      } else {
+      if (!err) {
         passport.authenticate("local")(req, res, function() {
-          res.redirect("/success");
+          res.redirect("/posts");
         });
+      } else {
+        console.log(err);
       }
     });
   });
@@ -148,7 +165,7 @@ app.route("/login")
         console.log(err);
         res.redirect("/");
       } else {
-        res.redirect("/success");
+        res.redirect("/posts");
       }
     });
   });
@@ -164,9 +181,9 @@ app.get('/auth/google/posts',
   }),
   function(req, res) {
     // Successful authentication, render posts.
-    res.render("posts", {
-      pageTitle: "Posts"
-    });
+
+    console.log(req.user);
+    res.redirect("/posts");
   });
 
 app.get('/auth/facebook',
@@ -178,18 +195,43 @@ app.get('/auth/facebook/posts',
   }),
   function(req, res) {
     // Successful authentication, redirect home.
-    res.render("posts", {
-      pageTitle: "Posts"
-    });
+    res.redirect("/posts");
   });
 
 
 app.route("/posts")
   .get((req, res) => {
     if (req.isAuthenticated()) {
-      res.render("posts", {
-        pageTitle: "Posts"
+      // console.log(req.user.id);
+      const defaultList = new Post({
+        title: "Its a bit lonely here...",
+        content: "Your stories will appear here! Go ahead write something beautiful!",
+        linkedUserId: req.user.id
       });
+      // defaultList.save();
+      Post.find({
+        linkedUserId: req.user.id
+      }, function(err, foundPost) {
+        if (!err) {
+          if (foundPost.length !== 0) {
+            console.log(foundPost);
+            console.log("I am insidr the if statemetn");
+            res.render("posts", {
+              pageTitle: "Mitory | Posts",
+              fName: req.user.fname,
+              posts: foundPost
+            });
+          } else {
+            defaultList.save();
+            console.log("I am inside else");
+            res.redirect("/posts");
+          }
+        } else {
+          console.log(err);
+        }
+      });
+
+
     } else {
       res.redirect("/login");
     }
