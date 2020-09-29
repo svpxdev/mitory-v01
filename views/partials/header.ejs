@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="/css/bootstrap-social.css" />
   <script src="https://kit.fontawesome.com/b8b0a96a19.js" crossorigin="anonymous"></script>
   <script src="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/js/medium-editor.min.js"></script>
- <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/medium-editor@latest/dist/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
 </head>
 
 <body>
@@ -33,8 +33,14 @@
             <li class="nav-item">
               <a class="nav-link" href="#about-section">About</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/login">Login</a>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="/login" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                User
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/login">Login</a>
+                <a class="dropdown-item" href="/logout">Logout</a>
+              </div>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/register" style="color: #0041F8">Register</a>

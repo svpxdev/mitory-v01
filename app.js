@@ -289,6 +289,14 @@ app.route("/delete/:postName")
     res.redirect("/posts");
   });
 
+
+app.route("/logout")
+  .get((req, res) => {
+    req.logout();
+    res.redirect("/");
+  });
+
+
 //Start the Server
 const port = process.env.PORT || 4500;
 app.listen(port, function() {
