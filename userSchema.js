@@ -36,6 +36,10 @@ const User = mongoose.model("User", userSchema);
 
 
 const postSchema = new mongoose.Schema({
+  username: {
+    type: String,
+    unique: false
+  },
   title: {
     type: String
   },

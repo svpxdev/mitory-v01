@@ -96,9 +96,10 @@ passport.use(new FacebookStrategy({
 
 //MongoDB Connection
 mongoose.set("useCreateIndex", true);
+mongoose.set("useFindAndModify", false);
 mongoose.connect(process.env.MONGO_URL, {
   useUnifiedTopology: true,
-  useNewUrlParser: true
+  useNewUrlParser: true,
 }, function(err) {
   if (!err) {
     console.log("Connection successful");
@@ -206,7 +207,8 @@ app.route("/posts")
       const defaultList = new Post({
         title: "Its a bit lonely here...",
         content: "Your stories will appear here! Go ahead write something beautiful!",
-        linkedUserId: req.user.id
+        linkedUserId: req.user.id,
+        username: req.user.id
       });
       // defaultList.save();
       Post.find({
@@ -239,17 +241,22 @@ app.route("/posts")
 
 app.route("/compose")
   .get((req, res) => {
-    res.render("compose", {
-      pageTitle: "Mitory | Compose",
-      fName: "Suryaveer"
-    });
+    if (req.isAuthenticated()) {
+      res.render("compose", {
+        pageTitle: "Mitory | Compose",
+        fName: req.user.fname
+      });
+    } else {
+      console.log("No fun");
+    }
   })
   .post((req, res) => {
     if (req.isAuthenticated()) {
       const blogpost = new Post({
         title: req.body.title,
         content: req.body.content,
-        linkedUserId: req.user.id
+        linkedUserId: req.user.id,
+        username: req.user.id,
       });
       blogpost.save();
       res.redirect("/posts");
@@ -296,6 +303,37 @@ app.route("/logout")
     res.redirect("/");
   });
 
+
+app.route("/update/:postName")
+  .get((req, res) => {
+    var queryTitle = req.params.postName;
+
+    Post.findById(queryTitle, (err, foundArt) => {
+      if (!err) {
+        res.render("update", {
+          pageTitle: "Mitory | Update",
+          post: foundArt
+        });
+      }
+    });
+  })
+
+  .post((req, res) => {
+    var queryTitle = req.params.postName;
+    console.log(queryTitle);
+    Post.findOneAndUpdate({
+      _id: queryTitle
+    }, {
+      title: req.body.title,
+      content: req.body.content
+    }, (err) => {
+      if (err) {
+        console.log(err);
+      } else {
+        res.redirect("/posts");
+      }
+    });
+  });
 
 //Start the Server
 const port = process.env.PORT || 4500;

@@ -145,3 +145,9 @@ html{
   font-size: 1.5rem;
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.page-top{
+  padding-top: 150px;
+  margin-bottom: 100px;
+  color:#0EB082 ;
+}

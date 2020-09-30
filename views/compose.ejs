@@ -6,12 +6,12 @@
 
     <div class="container compose">
       <div class="row">
-        <div class="col-md-6 compose">
-          <h2>Welcome, <%= fName %> ! </h2>
+        <div class="col-md-6 compose page-top">
+          <h2>Lets write a story, <%= fName %> ! </h2>
           <% var today = new Date();%>
           <%const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };%>
           <% var day = today.toLocaleDateString('us-EN', options)%>
-          <h4><%=day%></h4>
+          <h5><%=day%></h5>
 
         </div>
       </div>
