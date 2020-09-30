@@ -136,7 +136,10 @@ app.route("/register")
     var lastName = req.body.lname;
 
     User.register({
-      username: username
+      username: username,
+      fname: firstName,
+      lname: lastName,
+      linkedUserId: username
     }, password, function(err, user) {
       if (!err) {
         passport.authenticate("local")(req, res, function() {
