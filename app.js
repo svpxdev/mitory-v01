@@ -48,7 +48,7 @@ app.use(passport.session());
 passport.use(new GoogleStrategy({
     clientID: process.env.CLIENT_ID,
     clientSecret: process.env.CLIENT_SECRET,
-    callbackURL: "http://localhost:4500/auth/google/posts",
+    callbackURL: "https://mitory.herokuapp.com/auth/google/posts",
     userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"
   },
   function(accessToken, refreshToken, profile, cb) {
@@ -82,7 +82,7 @@ passport.deserializeUser(function(id, done) {
 passport.use(new FacebookStrategy({
     clientID: process.env.FACEBOOK_APP_ID,
     clientSecret: process.env.FACEBOOK_APP_SECRET,
-    callbackURL: "http://localhost:4500/auth/facebook/posts"
+    callbackURL: "https://mitory.herokuapp.com/auth/facebook/posts"
   },
   function(accessToken, refreshToken, profile, cb) {
     User.findOrCreate({
