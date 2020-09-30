@@ -12,6 +12,9 @@
   },
   "author": "svpxdev",
   "license": "ISC",
+  "engines":{
+    "node": "v12.18.4",
+  },
   "bugs": {
     "url": "https://github.com/svpxdev/mitory/issues"
   },
