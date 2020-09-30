@@ -170,7 +170,9 @@ app.route("/login")
         console.log(err);
         res.redirect("/");
       } else {
-        res.redirect("/posts");
+        passport.authenticate("local")(req, res, function() {
+          res.redirect("/posts");
+        });
       }
     });
   });
