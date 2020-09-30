@@ -9,6 +9,40 @@ Miroty comes from the two words My and Story. It is a simple journaling tool (un
 
 This is also a part of my portfolio for web developer positions. 
 
+## Tech Stack
+
+For this project the focus was on server side code and EJS templating engine. For this purpose, I implemented the webApp using the following 
+<ul>
+  <li><b> Backend</b> </li>
+  
+  <ul> 
+  <li> Node.js </li>
+  <li> Express </li>
+  </ul>
+  
+  <li> <b>Frontend</b> </li>
+  <ul> 
+  <li> HTML / Bootstrap </li>
+  <li> EJS Template Engine </li>
+  <li> CSS </li>
+  <li> JavaScript </li>
+  </ul>
+  
+  <li><b> Database</b> </li>
+  <ul> 
+  <li> MongoDB Atlas </li>
+  <li> Mongoose </li>
+  </ul>
+  
+  <li><b> Deployement</b> </li>
+  <ul> 
+  <li> Heroku </li>
+  </ul>
+  </ul>
+  
+
+
+
 ## Current Status
 
 The project is under constent development and I hope to work more on it in the coming days.
