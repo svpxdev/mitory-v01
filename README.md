@@ -1,4 +1,7 @@
-# <a href="https://mitory.herokuapp.com/"> Mitory - v01 </a>
+<img src="https://www.flaticon.com/svg/static/icons/svg/3349/3349775.svg" width="75px" height="75px" />
+<img src="https://img.shields.io/badge/mitory-v01.1.3-brightgreen"/>
+
+# <a href="https://mitory.herokuapp.com/"> Mitory - The Journaling App </a>
 A minimalist journaling platform. 
 
 <img src="https://i.ibb.co/X8190H3/github-img.png" alt="github-img" border="0">
