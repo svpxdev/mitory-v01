@@ -47,7 +47,7 @@ For this project the focus was on server side code and EJS templating engine. Fo
 
 The project is under constent development and I hope to work more on it in the coming days.
 <ul>
-<li> UI consistency and Encryption </li>
+<li> UI consistency and Post Content Encryption </li>
 <li> Code refactoring </li>
 </ul>
 
