@@ -5,62 +5,48 @@ A minimalist journaling platform.
 
 ## Description
 
-Miroty comes from the two words My and Story. It is a simple journaling tool (under development) which can used to keep track of personal stories. The tool in its current version is meant to be a private journal, in the future version I plan to release publication page, where users can publish their information. 
-
-This is also a part of my portfolio for web developer positions. 
+Miroty comes from the two words My and Story. It is a simple journaling tool (under development) which can be used to keep track of personal stories. The tool in its current version is meant to be a private journal, in the future version I plan to release publication page, where users can publish their information. 
 
 ## Tech Stack
 
-For this project the focus was on server side code and EJS templating engine. For this purpose, I implemented the webApp using the following 
-<ul>
-  <li><b> Backend</b> </li>
-  
-  <ul> 
-  <li> Node.js </li>
-  <li> Express </li>
-  </ul>
-  
-  <li> <b>Frontend</b> </li>
-  <ul> 
-  <li> HTML / Bootstrap </li>
-  <li> EJS Template Engine </li>
-  <li> CSS </li>
-  <li> JavaScript </li>
-  </ul>
-  
-  <li><b> Database</b> </li>
-  <ul> 
-  <li> MongoDB Atlas </li>
-  <li> Mongoose </li>
-  </ul>
-  
-  <li><b> Deployement</b> </li>
-  <ul> 
-  <li> Heroku </li>
-  </ul>
-  </ul>
-  
+For this project, the focus was on the server-side code and EJS templating engine. For this purpose, I implemented the web app using the following 
+
+- **Backend**
+  - Node JS
+  - Express
+- **Authentication**
+  - Passport Local 
+  - Google OAuth2.0
+  - Facebook 
+- **Frontend**
+  - HTML 
+  - Bootstrap
+  - Javascript
+  - CSS
+- **Database**
+  - Mongo DB Atlas
+- **Deployement**
+  - Heroku
 
 
 
 ## Current Status
 
-The project is under constent development and I hope to work more on it in the coming days.
-<ul>
-<li> UI consistency and Post Content Encryption </li>
-<li> Code refactoring </li>
-</ul>
+The project is under constant development and I hope to work more on it in the coming days.
+
+- [x] Design changes to internal pages. 
+- [x] UI consistency and Post Content Encryption 
+- [ ] Code refactoring
+
 
 ## Future Updates
 
-I plan to keep updating this projects with small features every now and then. Below are the list of updates.
-<ul>
-<li> Adding a rich text editor. </li>
-<li> Complete Database Encryption of private posts </li>
-<li> Design changes to internal pages </li>
-<li> Publication page </li>
-</ul>
+I plan to keep updating this project with small features every now and then. Below is the list of updates.
 
+- Adding a rich text editor.
+- Complete Database Encryption of private posts 
+- Design changes to internal pages
+- Publication page
 
 ## Get in touch
 
